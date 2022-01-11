@@ -1,5 +1,5 @@
 
-const criarTarefa = (evento) => {
+( () => { const criarTarefa = (evento) => {
 
 
     evento.preventDefault()
@@ -12,9 +12,11 @@ const criarTarefa = (evento) => {
     
      const tarefa = document.createElement('li')
      tarefa.classList.add('task')
+
     
     const conteudo = `<p class="content">${valor}</p>`
     tarefa.innerHTML = conteudo
+    tarefa.appendChild(BotaoConcluir())
     lista.appendChild(tarefa)
    
     input.value = " "
@@ -30,3 +32,30 @@ const  novatarefa = document.querySelector('[data-form-button]')
 
 
 novatarefa.addEventListener('click',criarTarefa)
+
+
+const BotaoConcluir = () => {
+
+  const botaoConclui = document.createElement('button')
+  botaoConclui.classList.add('check-button')
+  botaoConclui.innerText='concluir'
+  botaoConclui.addEventListener('click', concluirTarefa)
+
+
+  return botaoConclui
+
+} 
+
+
+const concluirTarefa=(evento) =>{
+    const botaoConclui = evento.target
+    const tarefaCompleta = botaoConclui.parentElement
+
+    tarefaCompleta.classList.toggle('done')
+
+    
+
+
+} 
+
+})()
